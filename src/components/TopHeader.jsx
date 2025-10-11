@@ -6,7 +6,7 @@ import logo from "../assets/eClothLogo.png";
 import style from "../css/Header.module.css";
 function TopHeader() {
   return (
-    <header className="shadow-lg">
+    <header className={`postion-sticky ${style.costumTopHeader}`}>
       <nav className="container py-2">
         <div className="row">
           <div className="col-3">

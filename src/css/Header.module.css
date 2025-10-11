@@ -1,3 +1,6 @@
+.costumTopHeader{
+  border-bottom: 1px solid black;
+}
 .custumSearch input{
   width: 100%;
   border-radius: 1rem 0 0 1rem;
@@ -22,4 +25,23 @@
 }
 #user{
   font-size: 1.2rem;
+}
+
+/* bottom header css */
+
+.linkGroup{
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+.linkGroup a{
+  text-decoration: none;
+  color: black;
+}
+.linkGroup a:hover{
+  color: #BD0028;
+}
+.costumDropdown{
+  background-color: white;
 }

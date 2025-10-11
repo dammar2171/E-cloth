@@ -1,0 +1,42 @@
+.costumCard img{
+  width: 20rem;
+  height: 18rem;
+}
+
+.costumCardBody h5{
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: #374151;
+}
+.costumCardBody h5 span{
+  font-size: 1rem;
+  color: #BD0028;
+}
+.costumCardBody p{
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.Mprice{
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: #374151;
+}
+.Rprice{
+  font-size: 1rem;
+  font-weight: 700;
+  color: #BD0028;
+}
+.productBagBtn{
+  float: right;
+  background-color: white;
+  color: black;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.productBagBtn:hover{
+  background-color: none;
+  border: 1px solid #BD0028;
+}

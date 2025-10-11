@@ -1,0 +1,23 @@
+/* Home page Features css */
+.costumFeature{
+  display: flex;
+  gap:0.6rem
+  
+}
+.costumFeature:hover{
+  padding-top: 0.4rem;
+  border-radius: 0.7rem;
+  box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.3) ;
+}
+.costumFeature .icon-i{
+  color: #BD0028;
+  font-size: 4rem;
+}
+.feature-content h6{
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #BD0028;
+}
+.feature-content p{
+  font-size: 0.8rem;
+}
