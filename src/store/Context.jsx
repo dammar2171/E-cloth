@@ -6,8 +6,15 @@ export const AppProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [favoriteProducts, setFavoriteProducts] = useState([]);
 
-  const addFavoriteProducts = (product) => {
-    setFavoriteProducts((prev) => [...prev, product]);
+  const toggleFavoriteProduct = (product) => {
+    setFavoriteProducts((prev) => {
+      const exists = prev.some((p) => p.id === product.id);
+      if (exists) {
+        return prev.filter((p) => p.id !== product.id);
+      } else {
+        return [...prev, product];
+      }
+    });
   };
 
   useEffect(() => {
@@ -17,7 +24,7 @@ export const AppProvider = ({ children }) => {
         setProducts(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Failed to fetch products:", error);
       });
   }, []);
 
@@ -27,7 +34,7 @@ export const AppProvider = ({ children }) => {
         products,
         favoriteProducts,
         setFavoriteProducts,
-        addFavoriteProducts,
+        toggleFavoriteProduct,
       }}
     >
       {children}

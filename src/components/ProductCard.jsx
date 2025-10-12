@@ -1,12 +1,12 @@
 import style from "../css/ProductCard.module.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { AppContext } from "../store/Context";
 function ProductCard({ item }) {
-
-  const { addFavoriteProducts } = useContext(AppContext);
+  const { favoriteProducts, toggleFavoriteProduct } = useContext(AppContext);
+  const isFavorited = favoriteProducts.some((p) => p.id === item.id);
   useEffect(() => {
     const tooltipTriggerList = document.querySelectorAll(
       '[data-bs-toggle="tooltip"]'
@@ -21,12 +21,15 @@ function ProductCard({ item }) {
       <button
         type="button"
         onClick={() => {
-          addFavoriteProducts(item);
-          setFavClicked(true);
+          toggleFavoriteProduct(item);
         }}
         className={`${style.productFavBtn}`}
       >
-        {favClicked == true ? <MdFavorite /> : <MdFavoriteBorder />}
+        {isFavorited ? (
+          <MdFavorite style={{ color: "red" , fontSize:"1.6rem"}} />
+        ) : (
+          <MdFavoriteBorder style={{fontSize:"1.6rem"}}/>
+        )}
       </button>
       <img src={item.pimage} className="card-img-top" alt="..." />
       <div className={`card-body ${style.costumCardBody}`}>
