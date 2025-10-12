@@ -1,4 +1,5 @@
 import style from "../css/Header.module.css";
+import { Link } from "react-router";
 function BottomHeader() {
   return (
     <header className="shadow-lg">
@@ -7,8 +8,8 @@ function BottomHeader() {
           <div className="col-3"></div>
           <div className="col-6 ">
             <div className={`${style.linkGroup}`}>
-              <a href="#">Home</a>
-              <a href="#">New</a>
+              <Link to={"/"}>Home</Link>
+              <Link to={"/newcloth"}>New</Link>
               <div className={`dropdown ${style.costumDropdown}`}>
                 <a
                   className="btn  dropdown-toggle"

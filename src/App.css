@@ -7,7 +7,7 @@
 .costumFeature:hover{
   padding-top: 0.4rem;
   border-radius: 0.7rem;
-  box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.3) ;
+  border: 1px solid #BD0028;
 }
 .costumFeature .icon-i{
   color: #BD0028;
@@ -20,4 +20,19 @@
 }
 .feature-content p{
   font-size: 0.8rem;
+}
+
+/* css of not found component */
+.costumNotFound{
+  height: 70vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.costumNotFound p{
+  color: #BD0028;
+  font-size: 1.3rem;
+  font-weight: 700;
 }

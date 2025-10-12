@@ -4,7 +4,13 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import logo from "../assets/eClothLogo.png";
 import style from "../css/Header.module.css";
+import { useNavigate } from "react-router";
 function TopHeader() {
+  const navigate = useNavigate();
+
+  const onHandleFavBtn = () => {
+    navigate("/favproducts");
+  };
   return (
     <header className={`postion-sticky ${style.costumTopHeader}`}>
       <nav className="container py-2">
@@ -21,7 +27,7 @@ function TopHeader() {
           <div
             className={`col-3 d-flex align-items-center justify-content-end gap-2 ${style.customBtnGroup}`}
           >
-            <button>
+            <button onClick={onHandleFavBtn}>
               <MdFavoriteBorder />
             </button>
             <button>

@@ -31,6 +31,7 @@
 }
 .productBagBtn{
   float: right;
+  border: none;
   background-color: white;
   color: black;
   font-size: 1.3rem;
@@ -39,4 +40,23 @@
 .productBagBtn:hover{
   background-color: none;
   border: 1px solid #BD0028;
+}
+.productFavBtn{
+  margin-left: 18rem;
+  border: none;
+  background-color: white;
+  color: black;
+  font-size: 1.3rem;
+}
+
+.cardlist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+  
+}
+
+.cardlist > * {
+  flex: 0 0 calc(33.333% - 20px); 
+  box-sizing: border-box;
 }

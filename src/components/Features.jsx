@@ -17,7 +17,7 @@ function Features() {
             <TbTruckDelivery className="icon-i" />
             <div className="feature-content">
               <h6>Delivery within 24 hours</h6>
-              <p>For All Orders Placed Before 6PM condition apply.</p>
+              <p>All Orders Placed Before 6PM condition apply.</p>
             </div>
           </div>
           <div className="col-4 costumFeature">

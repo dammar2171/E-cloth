@@ -24,3 +24,6 @@
 .costumCopyright a:hover{
   color: #BD0028;
 }
+.costumLowerFooter{
+  border-bottom: 1px solid black;
+}

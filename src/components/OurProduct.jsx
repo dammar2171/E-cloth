@@ -1,13 +1,13 @@
 import OurProductCardList from "./OurProductCardList";
 
-const OurProduct = () => {
+const OurProduct = ({items,text}) => {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid py-4">
       <div className="container">
         <div className="row">
-          <div className="col-12 fs-5 mb-3">Our Products</div>
+          <div className="col-12 fs-5 mb-3">{text}</div>
         </div>
-        <OurProductCardList />
+        <OurProductCardList items={items}/>
       </div>
     </div>
   );

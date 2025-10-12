@@ -6,8 +6,10 @@ import MainFooter from "../components/MainFooter";
 import OurProduct from "../components/OurProduct";
 import TopBarHome from "../components/TopBarHome";
 import TopHeader from "../components/TopHeader";
-
+import { useContext } from "react";
+import { AppContext } from "../store/Context";
 function Home() {
+  const { products } = useContext(AppContext);
   return (
     <>
       <TopBarHome />
@@ -15,7 +17,7 @@ function Home() {
       <BottomHeader />
       <HomeCrousal />
       <Features />
-      <OurProduct />
+      <OurProduct items={products} text={"Our Products"} />
       <MainFooter />
       <LowerFooter />
     </>
