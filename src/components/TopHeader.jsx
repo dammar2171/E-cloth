@@ -32,6 +32,7 @@ function TopHeader() {
             </button>
             <button>
               <MdOutlineShoppingBag />
+              <span className="costum-badge">10</span>
             </button>
             <button id={`${style.user}`}>
               <FaRegUser />
