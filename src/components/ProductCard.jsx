@@ -4,9 +4,13 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { AppContext } from "../store/Context";
+import { useNavigate } from "react-router";
 function ProductCard({ item }) {
-  const { favoriteProducts, toggleFavoriteProduct } = useContext(AppContext);
+  const navigate = useNavigate();
+  const { favoriteProducts, toggleFavoriteProduct, addProducts } =
+    useContext(AppContext);
   const isFavorited = favoriteProducts.some((p) => p.id === item.id);
+
   useEffect(() => {
     const tooltipTriggerList = document.querySelectorAll(
       '[data-bs-toggle="tooltip"]'
@@ -15,6 +19,14 @@ function ProductCard({ item }) {
       new window.bootstrap.Tooltip(tooltipTriggerEl);
     });
   }, []);
+
+  const onHandleAddProduct = () => {
+    addProducts(item);
+  };
+
+  const onHandleDetail = () => {
+    navigate(`/addcart/${item.id}`);
+  };
 
   return (
     <div className={`card ${style.costumCard}`} style={{ width: "20rem" }}>
@@ -26,9 +38,9 @@ function ProductCard({ item }) {
         className={`${style.productFavBtn}`}
       >
         {isFavorited ? (
-          <MdFavorite style={{ color: "red" , fontSize:"1.6rem"}} />
+          <MdFavorite style={{ color: "red", fontSize: "1.6rem" }} />
         ) : (
-          <MdFavoriteBorder style={{fontSize:"1.6rem"}}/>
+          <MdFavoriteBorder style={{ fontSize: "1.6rem" }} />
         )}
       </button>
       <img src={item.pimage} className="card-img-top" alt="..." />
@@ -44,6 +56,7 @@ function ProductCard({ item }) {
           </div>
           <div className="col-4">
             <button
+              onClick={onHandleAddProduct}
               type="button"
               className={`${style.productBagBtn}`}
               data-bs-toggle="tooltip"
@@ -55,6 +68,9 @@ function ProductCard({ item }) {
           </div>
         </div>
       </div>
+      <button onClick={onHandleDetail} className={`${style.costumDetailBtn}`}>
+        more details
+      </button>
     </div>
   );
 }

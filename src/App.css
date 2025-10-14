@@ -38,15 +38,30 @@
 }
 
 /* badge css */
-.costum-badge{
+.bag-button {
+  background: none;
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.costum-badge {
   position: absolute;
-  top:3.3rem;
-  width: 1.6rem;
-  height: 1.6rem;
-  right: 6.5rem;
-  border-radius: 50% ;
-  padding: 0.25rem;
-  font-size: 0.8rem;
+  top: -1px;
+  right: -9px;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
   background-color: #BD0028;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

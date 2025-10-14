@@ -5,6 +5,20 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [favoriteProducts, setFavoriteProducts] = useState([]);
+  const [bagProducts, setBagProducts] = useState([]);
+
+  const addProducts = (product) => {
+    setBagProducts((prev) => {
+      const existing = prev.find((p) => p.id === product.id);
+      if (existing) {
+        return prev.map((p) =>
+          p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+        );
+      } else {
+        return [...prev, { ...product, quantity: 1 }];
+      }
+    });
+  };
 
   const toggleFavoriteProduct = (product) => {
     setFavoriteProducts((prev) => {
@@ -33,8 +47,10 @@ export const AppProvider = ({ children }) => {
       value={{
         products,
         favoriteProducts,
+        bagProducts,
         setFavoriteProducts,
         toggleFavoriteProduct,
+        addProducts,
       }}
     >
       {children}

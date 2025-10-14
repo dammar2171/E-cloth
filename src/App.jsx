@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import NewCloth from "./pages/NewCloth";
 import { AppProvider } from "./store/Context";
 import FavoriteProduct from "./pages/FavoriteProduct";
+import AddCart from "./pages/AddCart";
 function App() {
   return (
     <AppProvider>
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/newcloth" element={<NewCloth />} />
           <Route path="/favproducts" element={<FavoriteProduct />} />
+          <Route path="/addcart/:id" element={<AddCart />} />
         </Routes>
       </Router>
     </AppProvider>
