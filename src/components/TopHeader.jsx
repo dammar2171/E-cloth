@@ -1,14 +1,16 @@
 import { IoSearch } from "react-icons/io5";
-import { MdFavoriteBorder } from "react-icons/md";
-import { MdOutlineShoppingBag } from "react-icons/md";
-import { FaRegUser } from "react-icons/fa";
+import { MdFavoriteBorder, MdOutlineShoppingBag } from "react-icons/md";
+import { FaRegUser, FaTrash } from "react-icons/fa";
 import logo from "../assets/eClothLogo.png";
 import style from "../css/Header.module.css";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../store/Context";
+
 function TopHeader() {
-  const { bagProducts } = useContext(AppContext);
+  const { bagProducts, removeBagProduct, productQuantity } =
+    useContext(AppContext);
+
   const navigate = useNavigate();
 
   const onHandleFavBtn = () => {
@@ -18,40 +20,160 @@ function TopHeader() {
   const onHandleLogo = () => {
     navigate("/");
   };
+
+  const onHandleBagBtn = () => {
+    const offcanvasEl = document.getElementById("offcanvasRight");
+    if (!offcanvasEl) return console.error("Offcanvas element not found");
+
+    if (
+      window &&
+      window.bootstrap &&
+      typeof window.bootstrap.Offcanvas === "function"
+    ) {
+      const bsOffcanvas = new window.bootstrap.Offcanvas(offcanvasEl);
+      bsOffcanvas.show();
+    } else {
+      console.error(
+        "Bootstrap JS not loaded. Add import 'bootstrap/dist/js/bootstrap.bundle.min.js'"
+      );
+    }
+  };
+
   return (
-    <header className={`postion-sticky ${style.costumTopHeader}`}>
-      <nav className="container py-2">
-        <div className="row">
-          <div className="col-3">
-            <img src={logo} onClick={onHandleLogo} alt="E-logo" width={100} />
+    <>
+      <header className={`position-sticky ${style.costumTopHeader}`}>
+        <nav className="container py-2">
+          <div className="row align-items-center">
+            <div className="col-3">
+              <img
+                src={logo}
+                onClick={onHandleLogo}
+                alt="E-logo"
+                width={100}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+
+            <div className={`col-6 d-flex ${style.custumSearch}`}>
+              <input type="search" placeholder="Search for clothes...." />
+              <button type="button">
+                <IoSearch />
+              </button>
+            </div>
+
+            <div
+              className={`col-3 d-flex align-items-center justify-content-end gap-2 ${style.customBtnGroup}`}
+            >
+              <button type="button" onClick={onHandleFavBtn}>
+                <MdFavoriteBorder />
+              </button>
+
+              <button
+                type="button"
+                className="bag-button"
+                onClick={onHandleBagBtn}
+              >
+                <div className="icon-wrapper" style={{ position: "relative" }}>
+                  <MdOutlineShoppingBag />
+                  {bagProducts.length > 0 && (
+                    <span className="costum-badge">{bagProducts.length}</span>
+                  )}
+                </div>
+              </button>
+
+              <button id={style.user} type="button">
+                <FaRegUser />
+              </button>
+            </div>
           </div>
-          <div className={`col-6 d-flex ${style.custumSearch}`}>
-            <input type="search" placeholder="Search for clothes...." />
-            <button>
-              <IoSearch />
-            </button>
-          </div>
-          <div
-            className={`col-3 d-flex align-items-center justify-content-end gap-2 ${style.customBtnGroup}`}
-          >
-            <button onClick={onHandleFavBtn}>
-              <MdFavoriteBorder />
-            </button>
-            <button className="bag-button">
-              <div className="icon-wrapper">
-                <MdOutlineShoppingBag />
-                {bagProducts.length != 0 && (
-                  <span className="costum-badge">{bagProducts.length}</span>
-                )}
-              </div>
-            </button>
-            <button id={`${style.user}`}>
-              <FaRegUser />
-            </button>
-          </div>
+        </nav>
+      </header>
+
+      <div
+        className="offcanvas offcanvas-end"
+        tabIndex={-1}
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="offcanvasRightLabel">
+            Your Cart
+          </h5>
+          <button
+            type="button"
+            className="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          />
         </div>
-      </nav>
-    </header>
+
+        <div className="offcanvas-body">
+          {bagProducts.length === 0 ? (
+            <p>Your cart is empty.</p>
+          ) : (
+            <>
+              <div className="mb-3">
+                {bagProducts.map((item) => (
+                  <div key={item.id} className="d-flex align-items-center mb-3">
+                    <img
+                      src={item.pimage}
+                      alt={item.pName}
+                      style={{
+                        width: 60,
+                        height: 60,
+                        objectFit: "cover",
+                        marginRight: 10,
+                      }}
+                    />
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 14 }}>{item.pName}</div>
+                      <div style={{ fontSize: 12, color: "#666" }}>
+                        Qty: {item.quantity || 1}
+                      </div>
+                    </div>
+
+                    <div style={{ marginLeft: 8, whiteSpace: "nowrap" }}>
+                      NPR {item.sPrice}
+                    </div>
+
+                    <button
+                      className="btn btn-sm btn-outline-danger ms-2"
+                      onClick={() => removeBagProduct(item.id)}
+                      title="Remove item"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        padding: "6px",
+                        borderRadius: "50%",
+                      }}
+                    >
+                      <FaTrash style={{ fontSize: "0.9rem" }} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              <div className="d-grid gap-2">
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  onClick={() => {
+                    const closeBtn = document.querySelector(
+                      "#offcanvasRight .btn-close"
+                    );
+                    if (closeBtn) closeBtn.click();
+                    navigate("/checkout");
+                  }}
+                >
+                  Checkout
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 
