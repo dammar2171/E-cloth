@@ -1,16 +1,25 @@
 import { useContext } from "react";
 import style from "../css/Cart.module.css";
 import { AppContext } from "../store/Context";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 
 function CartDescription() {
   const { bagProducts, totalPrice } = useContext(AppContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
   const onProceedToCheckout = () => {
     navigate("/checkout");
   };
+
+  const isCheckoutPage = location.pathname === "/checkout";
+
   return (
-    <div className={`${style.cartDescriptionContainer}`}>
+    <div
+      className={`${style.cartDescriptionContainer} ${
+        isCheckoutPage ? style.checkoutMode : ""
+      }`}
+    >
       <h1>Cart Total</h1>
       <p>
         Number of product:{" "}
@@ -33,12 +42,14 @@ function CartDescription() {
       <p>
         Shipping Cost: <span>Free</span>
       </p>
-      <button
-        className={`${style.proceedCheckoutBtn}`}
-        onClick={onProceedToCheckout}
-      >
-        Proceed to checkout
-      </button>
+      {!isCheckoutPage && (
+        <button
+          className={`${style.proceedCheckoutBtn}`}
+          onClick={onProceedToCheckout}
+        >
+          Proceed to checkout
+        </button>
+      )}
     </div>
   );
 }

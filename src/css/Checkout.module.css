@@ -1,0 +1,61 @@
+/* checkoutContainer component css */
+.imgSection{
+  background-image: url("../assets/checkout.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 15rem;
+}
+.imgSection h1{
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgb(77, 76, 76);
+  margin-top: 6rem;
+}
+.textSection {
+  border-top: 3px solid #8fae1b;
+  background-color: #F6F5F8;
+}
+.textSection p{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  padding-top: 0.9rem;
+}
+.textSection p span{
+  color: #8fae1b;
+}
+.checkoutCoupon{
+  width: 100%;
+  padding: 0.8rem;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+/* checkoutform component css */
+
+.formContainer{
+  background-color: white;
+  padding: 0.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.formContainer h2{
+  color: #6c6d6f;
+}
+.checkoutBtn{
+  width: 100%;
+  border: 1px solid #374151;
+  text-align: center;border-radius: 4px;
+  padding: 7px 0 7px;
+  text-transform: uppercase;
+  background-color: whitesmoke;
+  font-size: 0.9rem;
+  margin: 0 0.25rem 0.5rem 0.25rem;
+}
+
+.checkoutBtn:hover{
+  background-color: rgba(216, 216, 216, 0.712);
+  border: 1px solid #BD0028;
+ }

@@ -237,3 +237,7 @@
   background-color: rgba(216, 216, 216, 0.712);
   border: 1px solid #BD0028;
  }
+.checkoutMode{
+  background-color: #c9c7c7be;
+  color: rgb(255, 244, 244);
+}
