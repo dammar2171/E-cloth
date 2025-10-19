@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { AppContext } from "../store/Context";
 
 function TopHeader() {
-  const { bagProducts, removeBagProduct, productQuantity } =
+  const { bagProducts, removeBagProduct, } =
     useContext(AppContext);
 
   const navigate = useNavigate();
@@ -19,6 +19,10 @@ function TopHeader() {
 
   const onHandleLogo = () => {
     navigate("/");
+  };
+
+  const onHandleViewcart = () => {
+    navigate("/cart");
   };
 
   const onHandleBagBtn = () => {
@@ -71,7 +75,9 @@ function TopHeader() {
               <button
                 type="button"
                 className="bag-button"
-                onClick={onHandleBagBtn}
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
               >
                 <div className="icon-wrapper" style={{ position: "relative" }}>
                   <MdOutlineShoppingBag />
@@ -133,7 +139,7 @@ function TopHeader() {
                     </div>
 
                     <div style={{ marginLeft: 8, whiteSpace: "nowrap" }}>
-                      NPR {item.sPrice}
+                      NPR {Number(item.quantity) * Number(item.sPrice)}
                     </div>
 
                     <button
@@ -155,6 +161,12 @@ function TopHeader() {
               </div>
 
               <div className="d-grid gap-2">
+                <button
+                  onClick={onHandleViewcart}
+                  className={`${style.viewCartBtn}`}
+                >
+                  View Cart
+                </button>
                 <button
                   className="btn btn-outline-secondary"
                   type="button"

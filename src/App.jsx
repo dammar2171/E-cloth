@@ -6,6 +6,9 @@ import NewCloth from "./pages/NewCloth";
 import { AppProvider } from "./store/Context";
 import FavoriteProduct from "./pages/FavoriteProduct";
 import AddCart from "./pages/AddCart";
+import Checkout from "./pages/Checkout";
+import Cart from "./pages/Cart";
+
 function App() {
   return (
     <AppProvider>
@@ -15,6 +18,8 @@ function App() {
           <Route path="/newcloth" element={<NewCloth />} />
           <Route path="/favproducts" element={<FavoriteProduct />} />
           <Route path="/addcart/:id" element={<AddCart />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </Router>
     </AppProvider>

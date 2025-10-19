@@ -12,13 +12,21 @@ function ProductCard({ item }) {
   const isFavorited = favoriteProducts.some((p) => p.id === item.id);
 
   useEffect(() => {
-    const tooltipTriggerList = document.querySelectorAll(
-      '[data-bs-toggle="tooltip"]'
-    );
-    [...tooltipTriggerList].forEach((tooltipTriggerEl) => {
-      new window.bootstrap.Tooltip(tooltipTriggerEl);
-    });
-  }, []);
+  // Make sure bootstrap is loaded
+  const bs = window.bootstrap;
+  if (!bs || !bs.Tooltip) return; // prevent crash if bootstrap isn't available yet
+
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  const tooltipList = [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new bs.Tooltip(tooltipTriggerEl)
+  );
+
+  // Optional cleanup when component unmounts
+  return () => {
+    tooltipList.forEach((tooltip) => tooltip.dispose());
+  };
+}, []);
+
 
   const onHandleAddProduct = () => {
     addProducts(item);

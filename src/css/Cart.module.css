@@ -1,3 +1,4 @@
+
 .costumCartRight a{
   color: rgba(110, 108, 108, 0.831);
   text-decoration: none;
@@ -60,3 +61,179 @@
   background-color: rgba(225, 223, 223, 0.831);
   border: 1px solid #BD0028;
 }
+
+
+/* cart page css  */
+.imgSection{
+   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 15rem;
+}
+.imgSection h1{
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgb(77, 76, 76);
+  margin-top: 6rem;
+}
+.textSection {
+  border-top: 3px solid #8fae1b;
+  background-color: #F6F5F8;
+}
+.textSection p{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  padding-top: 0.9rem;
+}
+.textSection p span{
+  color: #8fae1b;
+}
+
+
+/* cartProductUpdater */
+
+.productUpdaterContainer {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.productUpdaterContainer .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.productUpdaterContainer .col-8 {
+  flex: 0 0 66.6667%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.productUpdaterContainer button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #d9534f;
+  transition: color 0.3s ease;
+}
+
+.productUpdaterContainer button:hover {
+  color: #c9302c;
+}
+
+.productUpdaterContainer img {
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.productUpdaterContainer div > p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.productUpdaterContainer div > span {
+  display: block;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.productUpdaterContainer .col-4 {
+  flex: 0 0 33.3333%;
+  padding: 1rem;
+}
+
+/* coupon component css */
+.costumCoupon{
+  border-radius: 0.3rem;
+  background-color: #F6F5F8;
+  border: 1px solid black;
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+.costumCoupon input{
+  width: 70%;
+  height: 2.5rem;
+}
+
+.costumCoupon button{
+  padding-top: 0.2rem ;
+  font-size: 1rem;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+}
+.costumCoupon button:hover{
+  background-color: rgba(225, 223, 223, 0.831);
+  border: 1px solid #BD0028;
+}
+
+
+/* CartDescription css */
+.cartDescriptionContainer {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cartDescriptionContainer h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+.cartDescriptionContainer p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #444;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartDescriptionContainer span {
+  font-weight: bold;
+  color: #BD0028;
+}
+
+.productListCart {
+  list-style-type: square;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.productListCart li {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+}
+.proceedCheckoutBtn{
+  width: 100%;
+  border-radius: 0.3rem;
+  border: 1px solid #374151;
+  text-align: center;border-radius: 4px;
+  padding: 7px 0 7px;
+  text-transform: uppercase;
+  background-color: whitesmoke;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+.proceedCheckoutBtn:hover{
+  background-color: rgba(216, 216, 216, 0.712);
+  border: 1px solid #BD0028;
+ }

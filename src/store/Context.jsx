@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
@@ -8,6 +9,7 @@ export const AppProvider = ({ children }) => {
   const [bagProducts, setBagProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(1);
 
+  // Add product to bag
   const addProducts = (product) => {
     const incomingQty = product.quantity ? Number(product.quantity) : 1;
 
@@ -18,7 +20,7 @@ export const AppProvider = ({ children }) => {
       );
 
       if (idx !== -1) {
-        // update existing item quantity (add incoming quantity)
+        // update existing item quantity
         const updated = [...prev];
         updated[idx] = {
           ...updated[idx],
@@ -26,7 +28,7 @@ export const AppProvider = ({ children }) => {
         };
         return updated;
       } else {
-        // add new item honoring the incoming quantity
+        // add new item
         return [...prev, { ...product, quantity: incomingQty }];
       }
     });
@@ -34,10 +36,12 @@ export const AppProvider = ({ children }) => {
     setProductQuantity(1);
   };
 
+  // Remove product from bag
   const removeBagProduct = (id) => {
-    setBagProducts((prev) => prev.filter((item) => item.id !== id));
+    setBagProducts((prev) => prev.filter((item) => !(item.id === id)));
   };
 
+  // Toggle favorite product
   const toggleFavoriteProduct = (product) => {
     setFavoriteProducts((prev) => {
       const exists = prev.some((p) => p.id === product.id);
@@ -49,6 +53,7 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  // Fetch products from API
   useEffect(() => {
     axios
       .get("/api/product")
@@ -60,6 +65,13 @@ export const AppProvider = ({ children }) => {
       });
   }, []);
 
+  // Dynamically calculate total price
+  const totalPrice = bagProducts.reduce((total, item) => {
+    const price = Number(item.sPrice) || 0;
+    const qty = Number(item.quantity) || 0;
+    return total + price * qty;
+  }, 0);
+
   return (
     <AppContext.Provider
       value={{
@@ -67,6 +79,7 @@ export const AppProvider = ({ children }) => {
         favoriteProducts,
         bagProducts,
         productQuantity,
+        totalPrice,
         removeBagProduct,
         setFavoriteProducts,
         toggleFavoriteProduct,

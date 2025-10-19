@@ -26,6 +26,16 @@
 #user{
   font-size: 1.2rem;
 }
+.viewCartBtn{
+  background-color: #BD0028;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  color: white;
+  border: none;
+}
+.viewCartBtn:hover{
+  background-color: #a30225;
+}
 
 /* bottom header css */
 
