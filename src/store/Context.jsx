@@ -9,18 +9,16 @@ export const AppProvider = ({ children }) => {
   const [bagProducts, setBagProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(1);
 
-  // Add product to bag
+  // Add product to bag (adds incomingQty to existing quantity)
   const addProducts = (product) => {
     const incomingQty = product.quantity ? Number(product.quantity) : 1;
 
     setBagProducts((prev) => {
-      // match by id and selectedSize so different sizes are separate entries
       const idx = prev.findIndex(
         (p) => p.id === product.id && p.selectedSize === product.selectedSize
       );
 
       if (idx !== -1) {
-        // update existing item quantity
         const updated = [...prev];
         updated[idx] = {
           ...updated[idx],
@@ -28,7 +26,6 @@ export const AppProvider = ({ children }) => {
         };
         return updated;
       } else {
-        // add new item
         return [...prev, { ...product, quantity: incomingQty }];
       }
     });
@@ -36,9 +33,34 @@ export const AppProvider = ({ children }) => {
     setProductQuantity(1);
   };
 
-  // Remove product from bag
-  const removeBagProduct = (id) => {
-    setBagProducts((prev) => prev.filter((item) => !(item.id === id)));
+  // Remove product from bag (if selectedSize provided, remove that specific variant)
+  const removeBagProduct = (id, selectedSize = null) => {
+    setBagProducts((prev) =>
+      prev.filter(
+        (item) =>
+          !(
+            item.id === id &&
+            // if selectedSize passed, require match; else remove all items with same id
+            (selectedSize === null ? true : item.selectedSize === selectedSize)
+          )
+      )
+    );
+  };
+
+  // Update a bag product's quantity (set to a specific number)
+  const updateBagProduct = (id, selectedSize = null, quantity = 1) => {
+    const qty = Number(quantity) || 0;
+    setBagProducts((prev) =>
+      prev.map((item) => {
+        if (
+          item.id === id &&
+          (selectedSize === null || item.selectedSize === selectedSize)
+        ) {
+          return { ...item, quantity: qty };
+        }
+        return item;
+      })
+    );
   };
 
   // Toggle favorite product
@@ -65,7 +87,7 @@ export const AppProvider = ({ children }) => {
       });
   }, []);
 
-  // Dynamically calculate total price
+  // Dynamically calculate total price (using sPrice from your example)
   const totalPrice = bagProducts.reduce((total, item) => {
     const price = Number(item.sPrice) || 0;
     const qty = Number(item.quantity) || 0;
@@ -81,6 +103,7 @@ export const AppProvider = ({ children }) => {
         productQuantity,
         totalPrice,
         removeBagProduct,
+        updateBagProduct,
         setFavoriteProducts,
         toggleFavoriteProduct,
         addProducts,

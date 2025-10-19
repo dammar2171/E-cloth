@@ -1,9 +1,14 @@
 import { useContext } from "react";
 import style from "../css/Cart.module.css";
 import { AppContext } from "../store/Context";
+import { useNavigate } from "react-router";
 
 function CartDescription() {
   const { bagProducts, totalPrice } = useContext(AppContext);
+  const navigate = useNavigate();
+  const onProceedToCheckout = () => {
+    navigate("/checkout");
+  };
   return (
     <div className={`${style.cartDescriptionContainer}`}>
       <h1>Cart Total</h1>
@@ -28,7 +33,12 @@ function CartDescription() {
       <p>
         Shipping Cost: <span>Free</span>
       </p>
-      <button className={`${style.proceedCheckoutBtn}`}>Proceed to checkout</button>
+      <button
+        className={`${style.proceedCheckoutBtn}`}
+        onClick={onProceedToCheckout}
+      >
+        Proceed to checkout
+      </button>
     </div>
   );
 }
