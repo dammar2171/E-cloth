@@ -1,8 +1,11 @@
+import { useLocation } from "react-router";
 import style from "../css/Checkout.module.css";
 const CheckoutForm = () => {
+  const location = useLocation();
+  const isAccountPage = location.pathname === "/account";
   return (
     <form className={`py-3 ${style.formContainer}`}>
-      <h2>Billing Details</h2>
+      <h2>{!isAccountPage ? "Billing Details" : "Sign Up"}</h2>
       <div className="mb-1">
         <label htmlFor="exampleFullName" className="form-label">
           Full Name <span>*</span>
@@ -200,9 +203,11 @@ const CheckoutForm = () => {
           placeholder="Email address"
         />
       </div>
-      <button type="submit" className={`${style.checkoutBtn}`}>
-        Submit
-      </button>
+      {isAccountPage && (
+        <button type="submit" className={`loginBtn ${style.checkoutBtn}`}>
+          Sign Up
+        </button>
+      )}
     </form>
   );
 };
