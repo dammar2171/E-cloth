@@ -6,6 +6,7 @@ import MainFooter from "../components/MainFooter";
 import OurProduct from "../components/OurProduct";
 import TopBarHome from "../components/TopBarHome";
 import TopHeader from "../components/TopHeader";
+import HomeBanner from "../components/HomeBanner";
 import { useContext } from "react";
 import { AppContext } from "../store/Context";
 function Home() {
@@ -18,6 +19,7 @@ function Home() {
       <HomeCrousal />
       <Features />
       <OurProduct items={products} text={"Our Products"} />
+      <HomeBanner />
       <MainFooter />
       <LowerFooter />
     </>

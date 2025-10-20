@@ -1,0 +1,39 @@
+.homeBanner{
+    background-image: url('../assets/home-bannerb.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 45vh;
+    color: white;
+    border-radius: 0.5rem;
+}
+.homeBanner h1{
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.homeBanner p{
+    font-size: 1rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+.homeBanner .btn{
+    margin-top: 1rem;
+    padding: 0.75rem 2rem;
+    font-size: 1.25rem;
+    background-color: #BD0028;
+    color: white;
+}
+.homeBanner .btn:hover{
+    background-color: #88031f;
+    border-color: #fdfefe;
+}
+.homeBannerStats{
+    margin-top: 2rem;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1.5rem;
+}
+.homeBannerStats span{
+    background: rgba(255, 255, 255, 0.523);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
