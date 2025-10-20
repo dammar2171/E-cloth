@@ -2,7 +2,10 @@ import CheckoutForm from "./CheckoutForm";
 import style from "../css/Checkout.module.css";
 import CartDescription from "../components/CartDescription";
 import Coupon from "../components/Coupon";
+import PaymentOption from "../components/PaymentOption";
+import Placeorder from "../components/Placeorder";
 import { FaCheckCircle } from "react-icons/fa";
+import Login from "./Login";
 const CheckoutContainer = () => {
   return (
     <div className="container-fluid py-4">
@@ -24,6 +27,8 @@ const CheckoutContainer = () => {
         </div>
         <div className="row pt-4">
           <div className="col-6">
+            <Login />
+            <br />
             <CheckoutForm />
           </div>
           <div className="col-6 ">
@@ -44,8 +49,12 @@ const CheckoutContainer = () => {
               </p>
               <div className="collapse" id="collapseExample">
                 <Coupon />
+                <br />
               </div>
             </div>
+            <PaymentOption />
+            <br />
+            <Placeorder />
           </div>
         </div>
       </div>

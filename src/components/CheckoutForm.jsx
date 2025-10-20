@@ -5,7 +5,7 @@ const CheckoutForm = () => {
       <h2>Billing Details</h2>
       <div className="mb-1">
         <label htmlFor="exampleFullName" className="form-label">
-          Full Name
+          Full Name <span>*</span>
         </label>
         <input
           type="text"
@@ -18,7 +18,7 @@ const CheckoutForm = () => {
       </div>
       <div className="mb-1">
         <label htmlFor="exampleFullName" className="form-label">
-          Country
+          Country <span>*</span>
         </label>
         <select name="" id="country" className="form-control" required>
           <option value="nepal">Nepal</option>
@@ -26,7 +26,7 @@ const CheckoutForm = () => {
       </div>
       <div className="mb-1">
         <label htmlFor="exampleFullName" className="form-label">
-          Zone
+          Zone <span>*</span>
         </label>
         <select name="zone" id="Zone" className="form-control" required>
           <option value="">Select Zone</option>
@@ -48,7 +48,7 @@ const CheckoutForm = () => {
       </div>
       <div className="mb-1">
         <label htmlFor="examplePostCode" className="form-label">
-          District
+          District <span>*</span>
         </label>
         <select name="district" id="District" className="form-control" required>
           <option value="">Select District</option>
@@ -152,7 +152,7 @@ const CheckoutForm = () => {
       </div>
       <div className="mb-1">
         <label htmlFor="examplePostCode" className="form-label">
-          Post Code/Zip
+          Post Code/Zip <span>*</span>
         </label>
         <input
           type="text"
@@ -164,7 +164,7 @@ const CheckoutForm = () => {
       </div>
       <div className="mb-1">
         <label htmlFor="exampleAddress" className="form-label">
-          Full Address
+          Full Address <span>*</span>
         </label>
         <input
           type="text"
@@ -176,20 +176,8 @@ const CheckoutForm = () => {
         />
       </div>
       <div className="mb-1">
-        <label htmlFor="examplePostCode" className="form-label">
-          Post Code/Zip
-        </label>
-        <input
-          type="text"
-          required
-          className="form-control"
-          id="examplePostCode"
-          aria-describedby="PostCodeHelp"
-        />
-      </div>
-      <div className="mb-1">
         <label htmlFor="examplePhoneNumber" className="form-label">
-          Phone
+          Phone Number <span>*</span>
         </label>
         <input
           type="text"

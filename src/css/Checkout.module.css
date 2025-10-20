@@ -17,6 +17,13 @@
   border-top: 3px solid #8fae1b;
   background-color: #F6F5F8;
 }
+.checkoutCoupon a{
+  text-decoration: none;
+  color: #BD0028;
+}
+.checkoutCoupon a:hover{
+  color: blue;
+}
 .textSection p{
   display: flex;
   justify-content: start;
@@ -59,3 +66,69 @@
   background-color: rgba(216, 216, 216, 0.712);
   border: 1px solid #BD0028;
  }
+ label span{
+  color:red
+ }
+
+ /* login component css */
+ .loginSection a{
+  color: #BD0028;
+  text-decoration: none;
+ }
+  .loginSection a:hover{
+    color: blue;
+  }
+ .forgotPassword{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+ }
+ .forgotPassword a{
+  text-decoration: none;
+  color: #BD0028;
+ }
+ .forgotPassword a:hover{
+  color: blue;
+ }
+ 
+ /* payment option component css */
+ .paymentOptionContainer{
+  margin-top: 0.8rem ;
+  border: 1px solid #374151;
+  padding: 0.6rem;
+  border-radius: 0.3rem;
+ }
+ .paymentOptionContainer h5{
+  font-size: 0.8rem;
+ }
+
+ /* place order component css */
+ .placeOrder{
+  background-color: white;
+  padding: 0.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+ }
+ .placeOrder h2{
+  color: #6c6d6f;
+ }
+ .placeOrder p{
+  font-size: 0.8rem;
+  color: #6c6d6f;
+ }
+  .placeOrderBtn{
+    width: 90%;
+    border: 1px solid #374151;
+    text-align: center;
+    border-radius: 4px;
+    padding: 7px 0 7px;
+    text-transform: uppercase;
+    background-color: whitesmoke;
+    font-size: 0.9rem;
+    margin: 0 0.25rem 0.5rem 0.25rem;
+  }
+  .placeOrderBtn:hover{
+    background-color: rgba(216, 216, 216, 0.712);
+    border: 1px solid #BD0028;
+   }
+   

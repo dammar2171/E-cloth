@@ -8,8 +8,7 @@ import { useContext } from "react";
 import { AppContext } from "../store/Context";
 
 function TopHeader() {
-  const { bagProducts, removeBagProduct, } =
-    useContext(AppContext);
+  const { bagProducts, removeBagProduct } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -23,6 +22,9 @@ function TopHeader() {
 
   const onHandleViewcart = () => {
     navigate("/cart");
+  };
+  const onHandleUserBtn = () => {
+    navigate("/account");
   };
 
   const onHandleBagBtn = () => {
@@ -87,7 +89,7 @@ function TopHeader() {
                 </div>
               </button>
 
-              <button id={style.user} type="button">
+              <button id={style.user} onClick={onHandleUserBtn} type="button">
                 <FaRegUser />
               </button>
             </div>

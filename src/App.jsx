@@ -8,6 +8,7 @@ import FavoriteProduct from "./pages/FavoriteProduct";
 import AddCart from "./pages/AddCart";
 import Checkout from "./pages/Checkout";
 import Cart from "./pages/Cart";
+import Account from "./pages/Account";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/addcart/:id" element={<AddCart />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </Router>
     </AppProvider>
