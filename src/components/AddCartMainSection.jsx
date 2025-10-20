@@ -3,6 +3,7 @@ import style from "../css/Cart.module.css";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../store/Context";
+import NavTab from "./NavTab.jsx";
 
 function AddCartMainSection({ product }) {
   const { productQuantity, setProductQuantity, addProducts } =
@@ -62,8 +63,6 @@ function AddCartMainSection({ product }) {
                   NPR {product.savedPrice}
                 </span>
               </div>
-
-              <p>{product.description}</p>
               <hr className="pt-2" />
 
               <span className={style.size}>Size</span>
@@ -94,6 +93,11 @@ function AddCartMainSection({ product }) {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <NavTab description={product.description} />
           </div>
         </div>
       </div>

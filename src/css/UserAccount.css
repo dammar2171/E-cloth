@@ -14,7 +14,7 @@
 .sidebar{
   background-color: white;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  width: 90%;
+  width: 100%;
   height: auto;
   padding: 1rem 0 1rem 0;
 }
@@ -87,7 +87,7 @@ form h2{
 
 /* userAccount styles */
 .privacy-policy-text p {
-  background-color: #f9f9f9;
+  background-color: aliceblue;
   padding: 0.7rem;
   border-radius: 0.5rem;
   font-size: 0.9rem;

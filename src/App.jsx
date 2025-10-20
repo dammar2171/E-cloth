@@ -9,10 +9,12 @@ import AddCart from "./pages/AddCart";
 import Checkout from "./pages/Checkout";
 import Cart from "./pages/Cart";
 import Account from "./pages/Account";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 function App() {
   return (
     <AppProvider>
+      <WhatsAppButton />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
