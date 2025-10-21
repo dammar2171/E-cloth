@@ -8,10 +8,16 @@ import NotFound from "../components/NotFound";
 import AddCartMainSection from "../components/AddCartMainSection";
 import { useParams } from "react-router";
 function AddCart() {
-  const { id } = useParams();
-  const { products } = useContext(AppContext);
+  const { id, type } = useParams();
+  const { products, newProducts } = useContext(AppContext);
 
-  const product = products.find((item) => String(item.id) === id);
+  let product;
+  if (type === "NewArrival") {
+    product = newProducts.find((item) => String(item.id) === id);
+  } else {
+    product = products.find((item) => String(item.id) === id);
+  }
+
   return (
     <>
       <TopHeader />

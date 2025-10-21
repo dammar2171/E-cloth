@@ -12,6 +12,13 @@ function HomeCrousal() {
             alt="image1"
             height={500}
           />
+          <div className="carousel-caption d-none d-md-block">
+            <h1>🧢 Urban Edge</h1>
+            <p>
+              Bold cuts and street-smart layers designed to keep you moving in
+              style.
+            </p>
+          </div>
         </div>
         <div className="carousel-item">
           <img
@@ -20,6 +27,13 @@ function HomeCrousal() {
             alt="image2"
             height={500}
           />
+          <div className="carousel-caption d-none d-md-block">
+            <h1>👗 Effortless Elegance</h1>
+            <p>
+              Discover flowy silhouettes and soft fabrics that make everyday
+              dressing feel luxurious
+            </p>
+          </div>
         </div>
       </div>
       <button

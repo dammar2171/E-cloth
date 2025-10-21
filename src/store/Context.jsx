@@ -5,6 +5,7 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [newProducts, setNewProducts] = useState([]);
   const [favoriteProducts, setFavoriteProducts] = useState([]);
   const [bagProducts, setBagProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(1);
@@ -87,6 +88,18 @@ export const AppProvider = ({ children }) => {
       });
   }, []);
 
+  // fetch new products from api
+  useEffect(() => {
+    axios
+      .get("/api/newProducts")
+      .then((response) => {
+        setNewProducts(response.data);
+      })
+      .catch((error) => {
+        console.log("Failed to fetch new products:", error);
+      });
+  }, []);
+
   // Dynamically calculate total price (using sPrice from your example)
   const totalPrice = bagProducts.reduce((total, item) => {
     const price = Number(item.sPrice) || 0;
@@ -102,6 +115,7 @@ export const AppProvider = ({ children }) => {
         bagProducts,
         productQuantity,
         totalPrice,
+        newProducts,
         removeBagProduct,
         updateBagProduct,
         setFavoriteProducts,

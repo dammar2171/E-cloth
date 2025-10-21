@@ -31,7 +31,7 @@ function CartDescription() {
       <ul className={style.productListCart}>
         {bagProducts.map((item) => (
           <li key={item.id}>
-            {item.pName}{" "}
+            {item.pName}:{" "}
             <span style={{ float: "right" }}>RS {item.sPrice}</span>
           </li>
         ))}

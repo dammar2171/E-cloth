@@ -97,7 +97,7 @@ function AddCartMainSection({ product }) {
         </div>
         <div className="row">
           <div className="col-12">
-            <NavTab description={product.description} />
+            <NavTab description={product.description} product={product} />
           </div>
         </div>
       </div>
