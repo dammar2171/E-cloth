@@ -13,7 +13,7 @@ function HomeCrousal() {
             height={500}
           />
           <div className="carousel-caption d-none d-md-block">
-            <h1>🧢 Urban Edge</h1>
+            <h1>Urban Edge</h1>
             <p>
               Bold cuts and street-smart layers designed to keep you moving in
               style.
@@ -28,7 +28,7 @@ function HomeCrousal() {
             height={500}
           />
           <div className="carousel-caption d-none d-md-block">
-            <h1>👗 Effortless Elegance</h1>
+            <h1>Effortless Elegance</h1>
             <p>
               Discover flowy silhouettes and soft fabrics that make everyday
               dressing feel luxurious
