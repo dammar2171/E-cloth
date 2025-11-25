@@ -12,9 +12,8 @@ function ProductCard({ item }) {
   const isFavorited = favoriteProducts.some((p) => p.id === item.id);
 
   useEffect(() => {
-    // Make sure bootstrap is loaded
     const bs = window.bootstrap;
-    if (!bs || !bs.Tooltip) return; // prevent crash if bootstrap isn't available yet
+    if (!bs || !bs.Tooltip) return; 
 
     const tooltipTriggerList = document.querySelectorAll(
       '[data-bs-toggle="tooltip"]'
@@ -23,7 +22,6 @@ function ProductCard({ item }) {
       (tooltipTriggerEl) => new bs.Tooltip(tooltipTriggerEl)
     );
 
-    // Optional cleanup when component unmounts
     return () => {
       tooltipList.forEach((tooltip) => tooltip.dispose());
     };

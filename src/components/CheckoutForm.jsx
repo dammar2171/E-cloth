@@ -1,10 +1,69 @@
 import { useLocation } from "react-router";
 import style from "../css/Checkout.module.css";
+import { AppContext } from "../store/Context";
+import { useContext } from "react";
+import { useRef } from "react";
 const CheckoutForm = () => {
+  const fullnameElement = useRef();
+  const imageElement = useRef();
+  // const zoneElement = useRef();
+  const districtElement = useRef();
+  // const postcodeElement = useRef();
+  const addressElement = useRef();
+  const phoneElement = useRef();
+  const passwordElement = useRef();
+  const confirmPsdElement = useRef();
+  const emailElement = useRef();
+
+  const { setSignupData } = useContext(AppContext);
   const location = useLocation();
   const isAccountPage = location.pathname === "/account";
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    const fullname = fullnameElement.current.value;
+    const imageFile = imageElement.current.files[0];
+    // const zone = zoneElement.current.value;
+    const district = districtElement.current.value;
+    // const postcode = postcodeElement.current.value;
+    const address = addressElement.current.value;
+    const phone = phoneElement.current.value;
+    const password = passwordElement.current.value;
+    const confirmPsd = confirmPsdElement.current.value;
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters long.");
+      return;
+    }
+    if (password !== confirmPsd) {
+      alert("Passwords do not match.");
+      return;
+    }
+    const email = emailElement.current.value;
+
+    console.log(image);
+
+    setSignupData({
+      fullname,
+      image: imageFile,
+      district,
+      address,
+      password,
+      phone,
+      email,
+    });
+    alert("Signup successful!");
+
+    fullnameElement.current.value = "";
+    imageElement.current.value = "";
+    // zoneElement.current.value = "";
+    districtElement.current.value = "";
+    // postcodeElement.current.value = "";
+    addressElement.current.value = "";
+    phoneElement.current.value = "";
+    emailElement.current.value = "";
+  };
   return (
-    <form className={`py-3 ${style.formContainer}`}>
+    <form onSubmit={handleSubmitForm} className={`py-3 ${style.formContainer}`}>
       <h2>{!isAccountPage ? "Billing Details" : "Sign Up"}</h2>
       <div className="mb-1">
         <label htmlFor="exampleFullName" className="form-label">
@@ -12,6 +71,7 @@ const CheckoutForm = () => {
         </label>
         <input
           type="text"
+          ref={fullnameElement}
           placeholder="full name"
           required
           className="form-control"
@@ -20,18 +80,22 @@ const CheckoutForm = () => {
         />
       </div>
       <div className="mb-1">
-        <label htmlFor="exampleFullName" className="form-label">
-          Country <span>*</span>
+        <label htmlFor="exampleImage" className="form-label">
+          Image <span>*</span>
         </label>
-        <select name="" id="country" className="form-control" required>
-          <option value="nepal">Nepal</option>
-        </select>
+        <input type="file" ref={imageElement} className="form-control" />
       </div>
-      <div className="mb-1">
+      {/* <div className="mb-1"> 
         <label htmlFor="exampleFullName" className="form-label">
           Zone <span>*</span>
         </label>
-        <select name="zone" id="Zone" className="form-control" required>
+        <select
+          name="zone"
+          id="Zone"
+          ref={zoneElement}
+          className="form-control"
+          required
+        >
           <option value="">Select Zone</option>
           <option value="mechi">Mechi</option>
           <option value="koshi">Koshi</option>
@@ -48,12 +112,18 @@ const CheckoutForm = () => {
           <option value="seti">Seti</option>
           <option value="mahakali">Mahakali</option>
         </select>
-      </div>
+      </div>*/}
       <div className="mb-1">
         <label htmlFor="examplePostCode" className="form-label">
           District <span>*</span>
         </label>
-        <select name="district" id="District" className="form-control" required>
+        <select
+          name="district"
+          ref={districtElement}
+          id="District"
+          className="form-control"
+          required
+        >
           <option value="">Select District</option>
 
           <optgroup label="Province 1">
@@ -153,18 +223,19 @@ const CheckoutForm = () => {
           </optgroup>
         </select>
       </div>
-      <div className="mb-1">
+      {/* <div className="mb-1"> 
         <label htmlFor="examplePostCode" className="form-label">
           Post Code/Zip <span>*</span>
         </label>
         <input
           type="text"
           required
+          ref={postcodeElement}
           className="form-control"
           id="examplePostCode"
           aria-describedby="PostCodeHelp"
         />
-      </div>
+      </div>*/}
       <div className="mb-1">
         <label htmlFor="exampleAddress" className="form-label">
           Full Address <span>*</span>
@@ -173,6 +244,7 @@ const CheckoutForm = () => {
           type="text"
           placeholder="House number and street number"
           required
+          ref={addressElement}
           className="form-control"
           id="exampleAddress"
           aria-describedby="addressHelp"
@@ -184,6 +256,7 @@ const CheckoutForm = () => {
         </label>
         <input
           type="text"
+          ref={phoneElement}
           className="form-control"
           id="examplePhoneNumber"
           placeholder="phone number"
@@ -193,14 +266,40 @@ const CheckoutForm = () => {
       </div>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
-          Email address(Optional)
+          Email address <span>*</span>
         </label>
         <input
           type="email"
+          ref={emailElement}
+          required
           className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           placeholder="Email address"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="passwordInput" className="form-label">
+          Password<span>*</span>
+        </label>
+        <input
+          ref={passwordElement}
+          type="password"
+          required
+          placeholder="please enter atleast 6 digit password"
+          className="form-control"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="passwordInput" className="form-label">
+          Confirm Password<span>*</span>
+        </label>
+        <input
+          type="password"
+          required
+          ref={confirmPsdElement}
+          placeholder="please enter same password again"
+          className="form-control"
         />
       </div>
       {isAccountPage && (

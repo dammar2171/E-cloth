@@ -8,10 +8,8 @@ const LowerFooter = () => {
           <div className="col-6">
             <p className={`${style.costumCopyright}`}>
               copyright © 2025 E-cloth. Designed by{" "}
-              <a href="https://porfolio-website-eight-lac.vercel.app">
-                Dammar Bhatt
-              </a>{" "}
-              ~All right reserved.
+              <a href="https://myportfoliov3.vercel.app/">Dammar Bhatt</a> ~All
+              right reserved.
             </p>
           </div>
           <div className="col-3"></div>

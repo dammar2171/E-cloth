@@ -7,7 +7,7 @@ const WhatsAppButton = () => {
       rel="noopener noreferrer"
       className="whatsapp-button"
     >
-      <IoLogoWhatsapp size={30} color="#fff" /> Chat with us  on WhatsApp
+      <IoLogoWhatsapp size={30} color="#fff" /> WhatsApp
     </a>
   );
 };

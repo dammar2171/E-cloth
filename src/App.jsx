@@ -9,7 +9,10 @@ import AddCart from "./pages/AddCart";
 import Checkout from "./pages/Checkout";
 import Cart from "./pages/Cart";
 import Account from "./pages/Account";
+import UserDashboard from "./pages/UserDashboard";
+import AccountDetail from "./pages/AccountDetail";
 import WhatsAppButton from "./components/WhatsAppButton";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
   return (
@@ -24,6 +27,22 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/account" element={<Account />} />
+          <Route
+            path="/userdashboard"
+            element={
+              <ProtectedRoutes>
+                <UserDashboard />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/accountdetail"
+            element={
+              <ProtectedRoutes>
+                <AccountDetail />
+              </ProtectedRoutes>
+            }
+          />
         </Routes>
       </Router>
     </AppProvider>
