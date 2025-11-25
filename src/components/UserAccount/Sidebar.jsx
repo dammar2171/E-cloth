@@ -4,14 +4,14 @@ import { FaRegUser } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaAddressCard } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../../store/Context";
 const Sidebar = () => {
-  const { setAuthenticated, authenticated } = useContext(AppContext);
+  const { logout, authenticated } = useContext(AppContext);
   const navigate = useNavigate();
   const handleLogout = () => {
-    setAuthenticated(false);
+    logout();
     navigate("/account");
   };
 

@@ -9,22 +9,28 @@ export const AppProvider = ({ children }) => {
   const [favoriteProducts, setFavoriteProducts] = useState([]);
   const [bagProducts, setBagProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(1);
-  const [signupData, setSignupData] = useState([
-    { email: "dammarbhatt111@gmail.com", password: "12345678" },
-  ]);
-  const [loginData, setLoginData] = useState([]);
+  const [signupData, setSignupData] = useState({
+    email: "dammarbhatt111@gmail.com",
+    password: "12345678",
+  });
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
   const [authenticated, setAuthenticated] = useState(false);
 
-  useEffect(() => {
-    if (
-      loginData.email == signupData.email &&
-      loginData.password == signupData.password
-    ) {
+  const login = (email, password) => {
+    if (email === signupData.email && password === signupData.password) {
       setAuthenticated(true);
+      setLoginData({ email, password });
     } else {
       setAuthenticated(false);
     }
-  }, [loginData, signupData]);
+  };
+
+  const logout = () => {
+    setAuthenticated(false);
+  };
 
   // Add product to bag (adds incomingQty to existing quantity)
   const addProducts = (product) => {
@@ -135,6 +141,8 @@ export const AppProvider = ({ children }) => {
         signupData,
         loginData,
         authenticated,
+        login,
+        logout,
         setLoginData,
         setSignupData,
         removeBagProduct,

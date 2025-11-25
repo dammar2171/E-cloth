@@ -1,5 +1,5 @@
 import style from "../css/Header.module.css";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 function BottomHeader() {
   return (
     <header className="shadow-lg">
@@ -70,7 +70,7 @@ function BottomHeader() {
               <a href="#">Accessories</a>
               <a href="#">Shoes</a>
               <a href="#">Sale</a>
-              <a href="#">Contact</a>
+              <NavLink to="/contact">Contact</NavLink>
             </div>
           </div>
           <div className="col-3"></div>

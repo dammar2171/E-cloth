@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { AppContext } from "../store/Context";
-import { useNavigate } from "react-router";
-const ProtectedRoutes = ({ children }) => {
-  const navigate = useNavigate();
-  const { authenticated } = useContext(AppContext);
-  console.log(authenticated);
+import { Navigate } from "react-router-dom";
 
-  if (!authenticated) {
-    return navigate("/account");
+const ProtectedRoutes = ({ children }) => {
+  const { authenticated } = useContext(AppContext);
+
+  if (authenticated) {
+    return children;
   }
-  return children;
+  return <Navigate to="/account" replace />;
 };
+
 export default ProtectedRoutes;

@@ -4,21 +4,17 @@ import { AppContext } from "../../store/Context";
 import { useNavigate } from "react-router";
 const AccountLogin = () => {
   const navigate = useNavigate();
-  const { setLoginData, authenticated } = useContext(AppContext);
+  const { login } = useContext(AppContext);
   const emailElement = useRef();
   const passwordElement = useRef();
   const handleSubmitForm = (e) => {
     e.preventDefault();
     const email = emailElement.current.value;
     const password = passwordElement.current.value;
-    setLoginData({ email, password });
+    login(email, password);
     emailElement.current.value = "";
     passwordElement.current.value = "";
-    if (authenticated) {
-      navigate("/userdashboard");
-    } else {
-      alert("Invalid credentials. Please try again.");
-    }
+    navigate("/userdashboard");
   };
   return (
     <form onSubmit={handleSubmitForm}>
