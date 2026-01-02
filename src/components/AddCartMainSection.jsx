@@ -6,6 +6,8 @@ import { AppContext } from "../store/Context";
 import NavTab from "./NavTab.jsx";
 
 function AddCartMainSection({ product }) {
+  console.log(product);
+
   const { productQuantity, setProductQuantity, addProducts } =
     useContext(AppContext);
 
@@ -71,9 +73,9 @@ function AddCartMainSection({ product }) {
                 value={selectedSize}
                 onChange={(e) => setSelectedSize(e.target.value)}
               >
-                <option value="">{product.size.first}</option>
-                <option value="1">{product.size.second}</option>
-                <option value="2">{product.size.third}</option>
+                <option value="">{product.size[0]}</option>
+                <option value="1">{product.size[1]}</option>
+                <option value="2">{product.size[2]}</option>
               </select>
 
               <div className="d-flex align-items-center gap-2 py-5">

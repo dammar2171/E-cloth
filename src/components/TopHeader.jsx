@@ -8,9 +8,18 @@ import { useContext } from "react";
 import { AppContext } from "../store/Context";
 
 function TopHeader() {
-  const { bagProducts, removeBagProduct } = useContext(AppContext);
+  const {
+    bagProducts,
+    removeBagProduct,
+    setOpenSearchModal,
+    setSearchedProduct,
+  } = useContext(AppContext);
 
   const navigate = useNavigate();
+
+  const handleSearchButton = () => {
+    setOpenSearchModal(true);
+  };
 
   const onHandleFavBtn = () => {
     navigate("/favproducts");
@@ -61,8 +70,12 @@ function TopHeader() {
             </div>
 
             <div className={`col-6 d-flex ${style.custumSearch}`}>
-              <input type="search" placeholder="Search for clothes...." />
-              <button type="button">
+              <input
+                type="search"
+                onChange={(e) => setSearchedProduct(e.target.value)}
+                placeholder="Search for clothes...."
+              />
+              <button type="button" onClick={handleSearchButton}>
                 <IoSearch />
               </button>
             </div>

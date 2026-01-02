@@ -7,18 +7,21 @@ import OurProduct from "../components/OurProduct";
 import TopBarHome from "../components/TopBarHome";
 import TopHeader from "../components/TopHeader";
 import HomeBanner from "../components/HomeBanner";
+import SearchModal from "../components/SearchModal";
 import { useContext } from "react";
 import { AppContext } from "../store/Context";
 function Home() {
-  const { products } = useContext(AppContext);
+  const { products, openSearchModal } = useContext(AppContext);
+  const homeProduct = products.filter((items) => items.type == "Featured");
   return (
     <>
       <TopBarHome />
       <TopHeader />
       <BottomHeader />
       <HomeCrousal />
+      {openSearchModal && <SearchModal />}
       <Features />
-      <OurProduct items={products} text={"Our Products"} />
+      <OurProduct items={homeProduct} text={"Our Products"} />
       <HomeBanner />
       <MainFooter />
       <LowerFooter />

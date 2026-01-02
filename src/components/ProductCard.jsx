@@ -6,6 +6,8 @@ import { MdFavorite } from "react-icons/md";
 import { AppContext } from "../store/Context";
 import { useNavigate } from "react-router";
 function ProductCard({ item }) {
+  console.log(item);
+
   const navigate = useNavigate();
   const { favoriteProducts, toggleFavoriteProduct, addProducts } =
     useContext(AppContext);
@@ -13,7 +15,7 @@ function ProductCard({ item }) {
 
   useEffect(() => {
     const bs = window.bootstrap;
-    if (!bs || !bs.Tooltip) return; 
+    if (!bs || !bs.Tooltip) return;
 
     const tooltipTriggerList = document.querySelectorAll(
       '[data-bs-toggle="tooltip"]'

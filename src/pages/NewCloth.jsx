@@ -7,7 +7,8 @@ import OurProduct from "../components/OurProduct";
 import TopHeader from "../components/TopHeader";
 import { AppContext } from "../store/Context";
 function NewCloth() {
-  const { newProducts } = useContext(AppContext);
+  const { products } = useContext(AppContext);
+  const newProducts = products.filter((items) => items.type == "NewArrival");
   return (
     <>
       <TopHeader />

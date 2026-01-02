@@ -9,11 +9,11 @@ import AddCartMainSection from "../components/AddCartMainSection";
 import { useParams } from "react-router";
 function AddCart() {
   const { id, type } = useParams();
-  const { products, newProducts } = useContext(AppContext);
-
+  const { products } = useContext(AppContext);
   let product;
   if (type === "NewArrival") {
-    product = newProducts.find((item) => String(item.id) === id);
+    product = products.find((item) => String(item.id) === id);
+    console.log(product);
   } else {
     product = products.find((item) => String(item.id) === id);
   }

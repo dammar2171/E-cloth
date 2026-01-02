@@ -2,27 +2,19 @@ import { useContext } from "react";
 import OurProductCardList from "./OurProductCardList.jsx";
 import { AppContext } from "../store/Context";
 const NavTab = ({ description, product }) => {
-  const { products, newProducts } = useContext(AppContext);
+  const { products } = useContext(AppContext);
+
   if (!product) return null;
 
-  const sourceType = product.type
-    ? product.type 
-    : newProducts.some((p) => p.id === product.id)
-    ? "NewArrival"
-    : "Featured";
-
-  const sourceArray = sourceType === "NewArrival" ? newProducts : products;
-
-  const related = sourceArray.filter(
+  const related = products.filter(
     (p) =>
       String(p.id) !== String(product.id) && p.category === product.category
   );
+
   const relatedFallback =
     related.length > 0
       ? related
-      : sourceArray
-          .filter((p) => String(p.id) !== String(product.id))
-          .slice(0, 4);
+      : products.filter((p) => String(p.id) !== String(product.id)).slice(0, 4);
 
   return (
     <>
