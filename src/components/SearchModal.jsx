@@ -6,14 +6,11 @@ const SearchModal = () => {
   const { setOpenSearchModal, searchedProduct, products } =
     useContext(AppContext);
 
-  console.log(products);
-
   const filteredProducts = products.filter(
     (p) =>
       p.pName.toLowerCase().includes(searchedProduct.toLowerCase()) ||
       p.category.toLowerCase().includes(searchedProduct.toLowerCase())
   );
-  console.log(filteredProducts);
 
   const handleClose = () => {
     setOpenSearchModal(false);
@@ -38,6 +35,9 @@ const SearchModal = () => {
               {filteredProducts.map((item, index) => (
                 <ProductCard key={index} item={item} />
               ))}
+              {filteredProducts.length == 0 && (
+                <p className="text-danger fs-4">Product not found</p>
+              )}
             </div>
           </div>
         </div>

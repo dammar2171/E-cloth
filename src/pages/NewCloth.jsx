@@ -5,9 +5,10 @@ import MainFooter from "../components/MainFooter";
 import NotFound from "../components/NotFound";
 import OurProduct from "../components/OurProduct";
 import TopHeader from "../components/TopHeader";
+import SearchModal from "../components/SearchModal";
 import { AppContext } from "../store/Context";
 function NewCloth() {
-  const { products } = useContext(AppContext);
+  const { products, openSearchModal } = useContext(AppContext);
   const newProducts = products.filter((items) => items.type == "NewArrival");
   return (
     <>
@@ -15,6 +16,7 @@ function NewCloth() {
       <BottomHeader />
       {newProducts.length === 0 && <NotFound />}
       <OurProduct items={newProducts} text={"New Products"} />
+      {openSearchModal && <SearchModal />}
       <MainFooter />
       <LowerFooter />
     </>

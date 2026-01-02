@@ -6,8 +6,6 @@ import { MdFavorite } from "react-icons/md";
 import { AppContext } from "../store/Context";
 import { useNavigate } from "react-router";
 function ProductCard({ item }) {
-  console.log(item);
-
   const navigate = useNavigate();
   const { favoriteProducts, toggleFavoriteProduct, addProducts } =
     useContext(AppContext);
