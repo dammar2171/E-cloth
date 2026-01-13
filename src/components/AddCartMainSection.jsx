@@ -46,7 +46,12 @@ function AddCartMainSection({ product }) {
       <div className="container">
         <div className="row">
           <div className="col-4">
-            <img src={product.pimage} alt="" height={400} />
+            <img
+              src={product.pimage}
+              alt=""
+              height={400}
+              style={{ width: "100%" }}
+            />
           </div>
 
           <div className="col-8">
@@ -97,7 +102,7 @@ function AddCartMainSection({ product }) {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row mt-3">
           <div className="col-12">
             <NavTab description={product.description} product={product} />
           </div>

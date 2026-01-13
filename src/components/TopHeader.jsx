@@ -21,19 +21,12 @@ function TopHeader() {
     setOpenSearchModal(true);
   };
 
-  const onHandleFavBtn = () => {
-    navigate("/favproducts");
-  };
-
   const onHandleLogo = () => {
     navigate("/");
   };
 
   const onHandleViewcart = () => {
     navigate("/cart");
-  };
-  const onHandleUserBtn = () => {
-    navigate("/account");
   };
 
   const onHandleBagBtn = () => {
@@ -59,7 +52,7 @@ function TopHeader() {
       <header className={`position-sticky ${style.costumTopHeader}`}>
         <nav className="container py-2">
           <div className="row align-items-center">
-            <div className="col-3">
+            <div className="col-4 col-md-3 ">
               <img
                 src={logo}
                 onClick={onHandleLogo}
@@ -69,7 +62,7 @@ function TopHeader() {
               />
             </div>
 
-            <div className={`col-6 d-flex ${style.custumSearch}`}>
+            <div className={`col-8 col-md-6 d-flex ${style.custumSearch}`}>
               <input
                 type="search"
                 onChange={(e) => setSearchedProduct(e.target.value)}
@@ -79,32 +72,17 @@ function TopHeader() {
                 <IoSearch />
               </button>
             </div>
-
             <div
-              className={`col-3 d-flex align-items-center justify-content-end gap-2 ${style.customBtnGroup}`}
+              className={`d-none d-sm-flex col-3 align-items-center justify-content-end gap-2 ${style.customBtnGroup}`}
             >
-              <button type="button" onClick={onHandleFavBtn}>
-                <MdFavoriteBorder />
-              </button>
-
-              <button
-                type="button"
-                className="bag-button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight"
-              >
-                <div className="icon-wrapper" style={{ position: "relative" }}>
-                  <MdOutlineShoppingBag />
-                  {bagProducts.length > 0 && (
-                    <span className="costum-badge">{bagProducts.length}</span>
-                  )}
-                </div>
-              </button>
-
-              <button id={style.user} onClick={onHandleUserBtn} type="button">
-                <FaRegUser />
-              </button>
+              <ButtonGroup />
+            </div>
+          </div>
+          <div className="row">
+            <div
+              className={`col-12 d-flex align-items-center gap-3 pt-2 justify-content-center d-block d-md-none ${style.customBtnGroup}`}
+            >
+              <ButtonGroup />
             </div>
           </div>
         </nav>
@@ -205,3 +183,41 @@ function TopHeader() {
 }
 
 export default TopHeader;
+
+const ButtonGroup = () => {
+  const navigate = useNavigate();
+  const { bagProducts } = useContext(AppContext);
+  const onHandleFavBtn = () => {
+    navigate("/favproducts");
+  };
+  const onHandleUserBtn = () => {
+    navigate("/account");
+  };
+
+  return (
+    <>
+      <button type="button" onClick={onHandleFavBtn}>
+        <MdFavoriteBorder />
+      </button>
+
+      <button
+        type="button"
+        className="bag-button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+      >
+        <div className="icon-wrapper" style={{ position: "relative" }}>
+          <MdOutlineShoppingBag />
+          {bagProducts.length > 0 && (
+            <span className="costum-badge">{bagProducts.length}</span>
+          )}
+        </div>
+      </button>
+
+      <button id={style.user} onClick={onHandleUserBtn} type="button">
+        <FaRegUser />
+      </button>
+    </>
+  );
+};
